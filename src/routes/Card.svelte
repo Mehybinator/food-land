@@ -1,4 +1,4 @@
-<div class="card w-80 h-[28rem] bg-base-100 shadow-xl group">
+<div class="card min-w-80 max-w-80 h-[28rem] bg-base-100 shadow-xl group">
   <figure
     class="transition-transform w-52 h-52 self-center group-hover:scale-125"
   >
