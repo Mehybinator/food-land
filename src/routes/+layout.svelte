@@ -3,12 +3,12 @@
     import "@fortawesome/fontawesome-free/css/all.min.css";
     import Header from "./Header.svelte";
     import Footer from "./Footer.svelte";
-    import Card from "./Card.svelte";
+    import Category from "./Category.svelte";
 </script>
 
-<div class="container m-auto">
+<div class="container mx-auto">
     <Header />
-    <Card />
+    <Category />
     <slot />
     <Footer />
 </div>

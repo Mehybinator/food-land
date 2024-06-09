@@ -1,4 +1,4 @@
-<div class="flex flex-col p-10 bg-neutral-800 text-neutral-content gap-10">
+<div class="flex flex-col p-10 bg-accent text-accent-content gap-10">
   <div class="flex flex-row justify-between items-center">
     <p>Adress</p>
     <div class="justify-self-end">

@@ -1,4 +1,4 @@
-<div class="card w-80 h-96 bg-base-200">
+<div class="card w-80 h-96 bg-base-100 shadow-xl">
   <figure class="w-52 h-52 self-center">
     <img
       src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
