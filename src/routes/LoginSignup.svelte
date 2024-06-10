@@ -35,7 +35,7 @@
           لطفا نام کاربری و رمز عبور خود را {signup ? "ایجاد" : "وارد"} کنید.
         </p>
       </div>
-      <div class="flex flex-col gap-{signup ? '2' : '8'} w-full">
+      <div class="flex flex-col gap-{signup ? '2' : '10'}  w-full">
         <label class="input input-bordered flex items-center gap-4 w-full h-16">
           <i class="fa-solid fa-user"></i>
           <input type="text" class="grow" placeholder="شماره همراه" />
@@ -62,7 +62,9 @@
           {errorMsg}
         </p>
       </div>
-      <button class="btn btn-primary w-full h-16">Press</button>
+      <button class="btn btn-primary w-full h-16"
+        >{signup ? "ثبت نام" : "ورود"}</button
+      >
     </div>
   </div>
 </dialog>

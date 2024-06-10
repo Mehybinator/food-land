@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="flex flex-row overflow-auto gap-4 py-10 bg-base-200 bg-opacity-50 rounded-2xl"
+  class="flex flex-row overflow-auto gap-4 py-10 pl-4 bg-base-200 bg-opacity-50 rounded-2xl"
 >
   <div class="flex flex-col min-w-36 max-w-36 justify-center items-center pr-4">
     <h2 class="text-2xl">Special</h2>
