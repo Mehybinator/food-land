@@ -6,31 +6,33 @@
 
 <button class="btn" on:click={() => modal.showModal()}>ورود/ثبت نام</button>
 <dialog bind:this={modal} class="modal">
-  <div class="modal-box min-w-96">
+  <div class="modal-box min-w-96 max-w-96 md:max-w-[32rem]">
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute left-2 top-2"
         >✕</button
       >
     </form>
-    <div class="flex flex-col justify-between items-center h-[40rem] pt-8">
-      <h3 class="font-bold text-lg">Hello!</h3>
-      <div class="place-self-start">
-        <button
-          class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-{!signup
-            ? 'primary'
-            : 'base-200'} py-4"
+    <div class="flex flex-col justify-between items-center h-[32rem]">
+      <h3 class="font-bold text-lg pt-6">Hello!</h3>
+      <div class="flex flex-col place-self-start">
+        <div class="flex gap-2 w-2/3">
+          <button
+          class="flex-1 btn btn-outline btn-primary !text-base-content hover:!text-primary-content rounded-b-none border-2 border-white {!signup
+            ? 'border-b-primary'
+            : 'border-b-base-200'} py-4"
           on:click={() => {
             signup = false;
           }}>ورود</button
         >
         <button
-          class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-{signup
-            ? 'primary'
-            : 'base-200'} py-4"
+          class="flex-1 btn btn-outline btn-primary !text-base-content hover:!text-primary-content rounded-b-none border-2 border-white {signup
+            ? 'border-b-primary'
+            : 'border-b-base-200'} py-4"
           on:click={() => {
             signup = true;
           }}>ثبت نام</button
         >
+        </div>
         <p class="mt-4">
           لطفا نام کاربری و رمز عبور خود را {signup ? "ایجاد" : "وارد"} کنید.
         </p>

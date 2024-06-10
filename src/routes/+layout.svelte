@@ -8,13 +8,13 @@
     import Cart from "./Cart.svelte";
 </script>
 
-<div class="container mx-auto">
-    <Header />
+<Header />
+<div class="mx-12">
     <div class="h-12"></div>
     <SpecialOffers />
     <div class="h-12"></div>
     <Category />
     <Cart />
     <slot />
-    <Footer />
 </div>
+<Footer />

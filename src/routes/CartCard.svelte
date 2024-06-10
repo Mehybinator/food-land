@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="card md:card-side bg-base-100 md:h-64 max-w-80 min-w-80 md:w-[32rem] md:max-w-none shadow-xl group"
+  class="card md:card-side bg-base-100 md:h-64 max-w-72 min-w-72 md:w-[26rem] md:max-w-none shadow-xl group"
 >
   <figure
     class="transition-transform self-center w-52 h-52 md:pr-6 group-hover:scale-125"
