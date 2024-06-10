@@ -26,8 +26,7 @@
         <button on:click={() => count++} class="btn btn-success join-item w-1/4"
           ><i class="fa-solid fa-plus"></i></button
         >
-        <span
-          class="join-item flex items-center justify-center w-2/4 bg-base-200"
+        <span class="join-item grid place-items-center w-2/4 bg-base-200"
           >{count}</span
         >
         <button on:click={() => count--} class="btn btn-error join-item w-1/4"

@@ -5,6 +5,7 @@
     import Footer from "./Footer.svelte";
     import Category from "./Category.svelte";
     import SpecialOffers from "./SpecialOffers.svelte";
+    import Cart from "./Cart.svelte";
 </script>
 
 <div class="container mx-auto">
@@ -13,6 +14,7 @@
     <SpecialOffers />
     <div class="h-12"></div>
     <Category />
+    <Cart />
     <slot />
     <Footer />
 </div>
