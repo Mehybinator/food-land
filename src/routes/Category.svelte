@@ -1,18 +1,39 @@
 <script lang="ts">
   import Card from "./Card.svelte";
   import DiscountCard from "./DiscountCard.svelte";
+  let tabIndex: number = 0;
 </script>
 
 <div class="flex items-center flex-col gap-6">
   <h1 class="text-3xl">دسته بندی ها</h1>
   <div class="flex flex-row gap-12 w-1/2">
     <button
-      class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-primary py-4"
-      >shoes</button
+      on:click={() => (tabIndex = 0)}
+      class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-{tabIndex ==
+      0
+        ? 'primary'
+        : 'base-200'} py-4">پیتزا</button
     >
     <button
-      class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-base-200 py-4"
-      >sneakers</button
+      on:click={() => (tabIndex = 1)}
+      class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-{tabIndex ==
+      1
+        ? 'primary'
+        : 'base-200'} py-4">برگر</button
+    >
+    <button
+      on:click={() => (tabIndex = 2)}
+      class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-{tabIndex ==
+      2
+        ? 'primary'
+        : 'base-200'} py-4">سالاد</button
+    >
+    <button
+      on:click={() => (tabIndex = 3)}
+      class="hover:bg-primary hover:text-primary-content hover:border-primary flex-1 btn btn-outline rounded-b-none border-white border-b-{tabIndex ==
+      3
+        ? 'primary'
+        : 'base-200'} py-4">نوشیدنی</button
     >
   </div>
   <div
