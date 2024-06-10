@@ -1,4 +1,5 @@
 <script lang="ts">
+  import LoginSignup from "./LoginSignup.svelte";
 </script>
 
 <div class="navbar bg-base-100">
@@ -6,21 +7,7 @@
     <a href="#" class="btn btn-ghost text-xl text-primary">daisyUI</a>
   </div>
   <div class="flex gap-2">
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn">ورود/ثبت نام</div>
-      <ul
-        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-      >
-        <li>
-          <a href="#" class="justify-between">
-            Profile
-            <span class="badge">New</span>
-          </a>
-        </li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Logout</a></li>
-      </ul>
-    </div>
+    <LoginSignup />
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
         <div class="indicator">
