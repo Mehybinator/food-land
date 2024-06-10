@@ -1,0 +1,43 @@
+<script lang="ts">
+  let count: number = 0;
+</script>
+
+<div
+  class="card md:card-side bg-base-100 md:h-64 max-w-80 min-w-80 md:w-[32rem] md:max-w-none shadow-xl group"
+>
+  <figure
+    class="transition-transform self-center w-52 h-52 md:pr-6 group-hover:scale-125"
+  >
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+      alt="Shoes"
+    />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">بیگ مک برگر</h2>
+    <p>100 گرم برگر دستساز، کاهو، گوجه، سیب زمینی</p>
+    <div class="flex flex-row justify-between items-end">
+      <p>320,000 ت</p>
+
+      {#if count > 0}
+        <div class="join w-32">
+          <button
+            on:click={() => count++}
+            class="btn btn-success join-item w-1/4"
+            ><i class="fa-solid fa-plus"></i></button
+          >
+          <span class="join-item grid place-items-center w-2/4 bg-base-200"
+            >{count}</span
+          >
+          <button on:click={() => count--} class="btn btn-error join-item w-1/4"
+            ><i class="fa-solid fa-minus"></i></button
+          >
+        </div>
+      {:else}
+        <button class="btn btn-primary w-fit h-11" on:click={() => count++}
+          >افزودن به سبد</button
+        >
+      {/if}
+    </div>
+  </div>
+</div>
