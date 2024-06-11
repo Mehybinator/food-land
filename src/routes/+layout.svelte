@@ -10,7 +10,7 @@
 </svelte:head>
 
 <Header />
-<div class="mx-12">
+<div class="mx-12 my-4">
     <slot />
 </div>
 <Footer />

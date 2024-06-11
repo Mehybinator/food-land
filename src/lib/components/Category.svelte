@@ -40,7 +40,7 @@
     <option>نوشیدنی</option>
   </select>
   <div
-    class="bg-base-200 bg-opacity-50 w-full py-12 md:px-10 lg:px-20 xl:px-14 2xl:px-11 gap-12 rounded-2xl rounded-b-none grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
+    class="bg-base-200 bg-opacity-50 w-full py-12 md:px-10 lg:px-20 xl:px-14 2xl:px-11 gap-12 rounded-2xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
   >
     <label
       class="lg:w-1/3 2xl:col-span-4 xl:col-span-3 md:col-span-2 input input-bordered flex items-center gap-2 shadow-xl border-none transition-all"

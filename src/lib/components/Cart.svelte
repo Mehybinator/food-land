@@ -4,7 +4,7 @@
 
 <div class="flex flex-col xl:flex-row gap-4">
   <div
-    class="flex flex-col bg-base-200 rounded-md py-10 basis-3/4 min-h-[37.5rem] max-h-[37.5rem]"
+    class="flex flex-col bg-base-200 bg-opacity-50 rounded-md py-10 basis-3/4 min-h-[37.5rem] max-h-[37.5rem]"
   >
     <h2 class="pr-8">سبد خرید</h2>
     <div class="divider"></div>
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div
-    class="justify-between flex flex-col basis-1/4 bg-base-200 p-10 rounded-md max-h-[26rem] min-h-[26rem]"
+    class="justify-between flex flex-col basis-1/4 bg-base-200 bg-opacity-50 p-10 rounded-md max-h-[26rem] min-h-[26rem]"
   >
     <div class="space-y-2">
       <h3>انتخاب آدرس</h3>
