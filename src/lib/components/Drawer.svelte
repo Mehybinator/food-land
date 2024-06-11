@@ -5,7 +5,7 @@
 <div class="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 
-  <div class="drawer-content bg-base-200 rounded-lg bg-opacity-50 mr-10">
+  <div class="drawer-content lg:h-[64rem] bg-base-200 rounded-lg bg-opacity-50 lg:mr-6 lg:overflow-auto">
     <slot />
   </div>
 
