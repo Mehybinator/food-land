@@ -28,22 +28,25 @@
         {/if}
       </div>
     </div>
-    {#if count > 0}
-      <div class="join">
-        <button on:click={() => count++} class="btn btn-success join-item w-1/4"
-          ><i class="fa-solid fa-plus"></i></button
+    <div class="join h-12">
+      <button class="btn btn-outline btn-error join-item basis-1/4">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+      {#if count > 0}
+          <button on:click={() => count++} class="btn btn-success join-item"
+            ><i class="fa-solid fa-plus"></i></button
+          >
+          <span class="join-item grid place-items-center bg-base-200 w-full"
+            >{count}</span
+          >
+          <button on:click={() => count--} class="btn btn-error join-item"
+            ><i class="fa-solid fa-minus"></i></button
+          >
+      {:else}
+        <button class="btn btn-primary join-item basis-3/4" on:click={() => count++}
+          >افزودن به سبد</button
         >
-        <span class="join-item grid place-items-center w-2/4 bg-base-200"
-          >{count}</span
-        >
-        <button on:click={() => count--} class="btn btn-error join-item w-1/4"
-          ><i class="fa-solid fa-minus"></i></button
-        >
-      </div>
-    {:else}
-      <button class="btn btn-primary w-full h-11" on:click={() => count++}
-        >افزودن به سبد</button
-      >
-    {/if}
+      {/if}
+    </div>
   </div>
 </div>
