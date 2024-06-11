@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { page } from "$app/stores";
+</script>
+
 <div class="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 
@@ -14,25 +18,25 @@
       </div>
       <!-- Sidebar content here -->
       <li>
-        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent border-b-primary rounded-b-none" href="/profile/favorites">
+        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent {$page.route.id === "/profile" ? 'border-b-primary' : 'border-b-base-200'} rounded-b-none" href="/profile">
           <i class="fa-solid fa-user"></i>
           <p class="pb-1">تاریخچه سفارشات</p>
         </a>
       </li>
       <li>
-        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent border-b-base-200 rounded-b-none" href="/profile/favorites">
+        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent {$page.route.id === "/profile/favorites" ? 'border-b-primary' : 'border-b-base-200'} rounded-b-none" href="/profile/favorites">
           <i class="fa-solid fa-user"></i>
           <p class="pb-1">علاقه مندی ها</p>
         </a>
       </li>
       <li>
-        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent border-b-base-200 rounded-b-none" href="/profile/favorites">
+        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent {$page.route.id === "/profile/adresses" ? 'border-b-primary' : 'border-b-base-200'} rounded-b-none" href="/profile/adresses">
           <i class="fa-solid fa-user"></i>
           <p class="pb-1">آدرس ها</p>
         </a>
       </li>
       <li>
-        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent border-b-base-200 rounded-b-none" href="/profile/favorites">
+        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent {$page.route.id === "/profile/userinfo" ? 'border-b-primary' : 'border-b-base-200'} rounded-b-none" href="/profile/userinfo">
           <i class="fa-solid fa-user"></i>
           <p class="pb-1">اطلاعات حساب کاربری</p>
         </a>

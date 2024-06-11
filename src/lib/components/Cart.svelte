@@ -1,6 +1,5 @@
 <script lang="ts">
   import Card from "./Card.svelte";
-  import CartCard from "./CartCard.svelte";
 </script>
 
 <div class="flex flex-col xl:flex-row gap-4">
@@ -10,13 +9,13 @@
     <h2 class="pr-8">سبد خرید</h2>
     <div class="divider"></div>
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 place-items-center overflow-auto gap-y-4"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-y-4"
     >
-      <CartCard />
-      <CartCard />
-      <CartCard />
-      <CartCard />
-      <CartCard />
+      <Card discount={9} />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </div>
   </div>
   <div

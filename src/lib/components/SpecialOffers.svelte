@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DiscountCard from "./DiscountCard.svelte";
+  import Card from "./Card.svelte";
 </script>
 
 <div
@@ -9,12 +9,10 @@
     <h2 class="text-2xl">Special</h2>
     <p>offers</p>
   </div>
-  <DiscountCard />
-  <DiscountCard />
-  <DiscountCard />
-  <DiscountCard />
-  <DiscountCard />
-  <DiscountCard />
-  <DiscountCard />
-  <DiscountCard />
+  <Card discount={20} />
+  <Card discount={15} />
+  <Card discount={25} />
+  <Card discount={90} />
+  <Card discount={65} />
+  <Card discount={50} />
 </div>

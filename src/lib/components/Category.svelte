@@ -1,6 +1,5 @@
 <script lang="ts">
   import Card from "./Card.svelte";
-  import DiscountCard from "./DiscountCard.svelte";
   let tabIndex: number = 0;
 </script>
 
@@ -51,10 +50,11 @@
     </label>
     <Card />
     <Card />
-    <DiscountCard />
+    <Card discount={5}/>
     <Card />
-    <DiscountCard />
     <Card />
-    <DiscountCard />
+    <Card />
+    <Card />
+    <Card />
   </div>
 </div>
