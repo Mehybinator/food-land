@@ -1,10 +1,14 @@
 <script lang="ts">
   import LoginSignup from "./LoginSignup.svelte";
+  import { page } from '$app/stores';
 </script>
 
 <div class="navbar bg-base-100">
   <div class="flex-1">
-    <a href="/" class="btn btn-ghost text-xl text-primary">daisyUI</a>
+    {#if $page.route.id === '/profile'}
+      <label for="my-drawer-2" class="btn btn-ghost btn-circle drawer-button lg:hidden"><i class="fa-solid fa-user"></i></label>
+    {/if}
+    <a href="/" class="btn btn-ghost text-xl text-primary hidden lg:inline-flex">daisyUI</a>
   </div>
   <div class="flex gap-2">
     <LoginSignup />

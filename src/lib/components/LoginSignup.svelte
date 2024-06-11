@@ -4,7 +4,10 @@
   let errorMsg: string = "";
 </script>
 
-<button class="btn" on:click={() => modal.showModal()}>ورود/ثبت نام</button>
+<button class="btn" on:click={() => modal.showModal()}>
+  <i class="fa-solid fa-right-to-bracket"></i>
+  <p class="pb-1 hidden sm:block">ورود/ثبت نام</p>
+</button>
 <dialog bind:this={modal} class="modal">
   <div class="modal-box min-w-96 max-w-96 md:max-w-[32rem]">
     <form method="dialog">
