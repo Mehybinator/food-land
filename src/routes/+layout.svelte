@@ -1,20 +1,12 @@
 <script lang="ts">
     import "../app.css";
     import "@fortawesome/fontawesome-free/css/all.min.css";
-    import Header from "./Header.svelte";
-    import Footer from "./Footer.svelte";
-    import Category from "./Category.svelte";
-    import SpecialOffers from "./SpecialOffers.svelte";
-    import Cart from "./Cart.svelte";
+    import Header from "$lib/components/Header.svelte";
+    import Footer from "$lib/components/Footer.svelte";
 </script>
 
 <Header />
 <div class="mx-12">
-    <div class="h-12"></div>
-    <SpecialOffers />
-    <div class="h-12"></div>
-    <Category />
-    <Cart />
     <slot />
 </div>
 <Footer />
