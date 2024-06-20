@@ -16,11 +16,11 @@
       >
     </form>
     <div class="flex flex-col justify-between items-center h-[32rem]">
-      <h3 class="font-bold text-lg pt-6">Hello!</h3>
+      <img src="/images/logo.png" alt="" class="w-24 pt-8">
       <div class="flex flex-col place-self-start">
         <div class="flex gap-2 w-2/3">
           <button
-          class="flex-1 btn btn-outline btn-primary !text-base-content hover:!text-primary-content rounded-b-none border-2 border-white {!signup
+          class="font-extrabold text-lg flex-1 btn btn-lg btn-outline btn-primary !text-base-content hover:!text-primary-content rounded-b-none border-2 border-white {!signup
             ? 'border-b-primary'
             : 'border-b-base-200'} py-4"
           on:click={() => {
@@ -28,7 +28,7 @@
           }}>ورود</button
         >
         <button
-          class="flex-1 btn btn-outline btn-primary !text-base-content hover:!text-primary-content rounded-b-none border-2 border-white {signup
+          class="font-extrabold text-lg whitespace-nowrap flex-1 btn btn-lg btn-outline btn-primary !text-base-content hover:!text-primary-content rounded-b-none border-2 border-white {signup
             ? 'border-b-primary'
             : 'border-b-base-200'} py-4"
           on:click={() => {

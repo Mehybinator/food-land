@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Qs_Iranyekan';
+    src: url('/fonts/Qs_Iranyekan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Qs_Iranyekan';
+    src: url('/fonts/Qs_Iranyekan black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Qs_Iranyekan';
+    src: url('/fonts/Qs_Iranyekan bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Qs_Iranyekan';
+    src: url('/fonts/Qs_Iranyekan extrablack.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Qs_Iranyekan';
+    src: url('/fonts/Qs_Iranyekan extrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Qs_Iranyekan';
+    src: url('/fonts/Qs_Iranyekan light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Qs_Iranyekan';
+    src: url('/fonts/Qs_Iranyekan medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  /* Apply the font globally */
+  body {
+    font-family: 'Qs_Iranyekan', sans-serif;
+  }
