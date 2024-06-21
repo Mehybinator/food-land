@@ -14,7 +14,7 @@
   </div>
   <div class="flex gap-2">
     <LoginSignup />
-    <a href="/cart" class="btn btn-ghost btn-circle">
+    <a href="/checkout" class="btn btn-ghost btn-circle">
       <div class="indicator">
         <span class="badge badge-sm indicator-item indicator-start">8</span>
         <i class="fa-solid fa-cart-shopping"></i>
