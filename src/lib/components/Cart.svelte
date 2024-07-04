@@ -11,11 +11,9 @@
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-y-4"
     >
-      <Card discount={9} />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <!-- {#each data as category}
+        <Card data={food} />
+      {/each} -->
     </div>
   </div>
   <div

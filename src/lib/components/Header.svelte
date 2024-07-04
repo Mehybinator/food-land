@@ -1,6 +1,8 @@
 <script lang="ts">
   import LoginSignup from "./LoginSignup.svelte";
+  import { currentUser } from "$lib/user";
   import { page } from '$app/stores';
+
   let y: number;
 </script>
 
@@ -13,10 +15,17 @@
     <a href="/"><img src="/images/logo.png" alt="" class="min-w-24 max-w-24 {$page.route.id && $page.route.id.startsWith('/(authed)/profile') ? 'hidden lg:inline-flex' : ''}"></a>
   </div>
   <div class="flex gap-2">
-    <LoginSignup />
+    {#if $currentUser}
+      <a href="/profile" class="btn">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <p class="hidden sm:block">{$currentUser.userName}</p>
+      </a>
+    {:else}
+      <LoginSignup />
+    {/if}
     <a href="/checkout" class="btn btn-ghost btn-circle">
       <div class="indicator">
-        <span class="badge badge-sm indicator-item indicator-start">8</span>
+        <!-- <span class="badge badge-sm indicator-item indicator-start">8</span> -->
         <i class="fa-solid fa-cart-shopping"></i>
       </div>
     </a>

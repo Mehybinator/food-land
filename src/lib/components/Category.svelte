@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fly } from "svelte/transition";
   import Card from "./Card.svelte";
   import type { Category, FoodItem } from '$lib/customInterfaces';
 
@@ -8,7 +9,6 @@
   let searchQuery: string = '';
   
 </script>
-
 <div class="flex items-center flex-col gap-6">
   <h1 class="text-3xl">دسته بندی ها</h1>
   <div class="flex-row gap-12 w-1/2 hidden lg:flex">
