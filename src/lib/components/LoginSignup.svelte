@@ -1,6 +1,8 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
   import { goto } from "$app/navigation";
+  import { login } from "$lib/auth";
+  import { register } from "$lib/auth";
 
   let modal: HTMLDialogElement;
   let signup: boolean = false;
@@ -8,50 +10,31 @@
 
   let username: string;
   let password: string;
-  let passwordConfirm: string;
+  let confirmPassword: string;
 
   let loading: boolean = false;
 
-  function logup() {}
-
-  async function login() {
+  async function loginSignup() {
     loading = true;
-    try {
-      const response = await fetch("http://foodland.somee.com/api/Auth/login", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username: username, password: password }),
-      });
-      if (!response.ok) {
-        errorMsg = "لطفا از صحت اطلاعات اطمینان یابید!"
-        loading = false;
-        return;
-      }
-
-      const json = await response.json();
-
-      localStorage.setItem("token", json.token);
-      localStorage.setItem("user", JSON.stringify(json.user));
-      localStorage.setItem("favorites", JSON.stringify(json.favorites));
-
-      goto('/');
-      loading = false;
-      return;
-
-    } catch (error) {
-      errorMsg = "خطایی رخ داد!"
-      loading = false;
-      return;
-    }
-  }
-
-  function loginSignup() {
     if (signup) {
-      logup();
+      const res = await register(username, password, confirmPassword);
+      if(!res.status){
+        errorMsg = res.msg;
+      }
+      else{
+        goto('/');
+      }
+      loading = false;
+      return;
     }
-    login();
+    const res = await login(username, password);
+    if(!res.status){
+      errorMsg = res.msg;
+    }
+    else{
+      goto('/');
+    }
+    loading = false;
   }
 </script>
 
@@ -119,7 +102,7 @@
           >
             <i class="fa-solid fa-key"></i>
             <input
-              bind:value={passwordConfirm}
+              bind:value={confirmPassword}
               type="text"
               class="grow"
               placeholder="تکرار رمز عبور"

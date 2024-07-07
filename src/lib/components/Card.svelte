@@ -1,14 +1,14 @@
 <script lang="ts">
   import type { FoodItem } from "$lib/customInterfaces";
-  import { currentFavorites } from "$lib/user";
+  import { auth } from "$lib/stores/auth";
 
   let count: number = 0;
   let isFavorite: boolean = false;
 
   export let data: FoodItem;
 
-  if ($currentFavorites) {
-    const favItem = $currentFavorites.filter(value => value.id === data.id);
+  if ($auth) {
+    const favItem = $auth.favorites.filter(value => value.id === data.id);
     isFavorite = favItem.length > 0;
   }
 

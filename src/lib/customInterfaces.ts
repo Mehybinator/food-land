@@ -13,6 +13,19 @@ export interface Favorites extends FoodItem {
     category: string | null;
 }
 
+export interface CartItem {
+    id: number,
+    userId: string,
+    foodId: number,
+    quantity: number,
+    food: Favorites,
+}
+
+export interface Cart {
+    cartItems: CartItem[],
+    cartCount: number
+}
+
 export interface Category {
     id: number;
     name: string;
@@ -37,3 +50,15 @@ export interface User {
     accessFailedCount: number
 }
 
+export interface Auth {
+    isAuthed: boolean,
+    token: string,
+    userName: string,
+    name: string,
+    favorites: Favorites[],
+    cart: Cart,
+}
+
+export interface Profile {
+    name: string,
+}
