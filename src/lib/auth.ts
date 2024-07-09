@@ -6,7 +6,7 @@ export async function login(username: string, password: string): Promise<{status
     const response = await fetch("http://foodland.somee.com/api/Auth/login", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: username, password: password })
+      body: JSON.stringify({ username, password })
     });
 
     if (!response.ok) return({status: false, msg:'Login failed'});
@@ -14,12 +14,14 @@ export async function login(username: string, password: string): Promise<{status
     const data = await response.json();
     
     auth.set({
-      isAuthed: true,
       token: data.token,
       userName: data.user.userName,
       name: data.name,
       favorites: data.favorites,
-      cart: (data.cartItems, data.cartCount),
+      cart: {
+        cartItems: data.cartItems,
+        cartCount: data.cartCount
+      }
     });
 
     return ({status: true, msg:''});
@@ -33,13 +35,13 @@ export async function login(username: string, password: string): Promise<{status
 
 export async function register(username: string, password: string, confirmPassword: string): Promise<{status: boolean, msg: string}> {
   try {
-    const response = await fetch('https://foodland.somee.com/api/Auth/register', {
+    const response = await fetch('http://foodland.somee.com/api/Auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password, confirmPassword })
     });
 
-    if (!response.ok) return({status: false, msg:'Login failed'});
+    if (!response.ok) return({status: false, msg:'Registration failed'});
 
     const res = await login(username, password);
 

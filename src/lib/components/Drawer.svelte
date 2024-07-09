@@ -1,5 +1,7 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
   import { page } from "$app/stores";
+    import { logOut } from "$lib/auth";
   let drawerState: boolean;
 </script>
 
@@ -31,7 +33,7 @@
         </a>
       </li>
       <li>
-        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent {$page.route.id === "/(authed)/profile/adresses" ? 'border-b-primary' : 'border-b-base-200'} rounded-b-none" href="/profile/adresses">
+        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent {$page.route.id === "/(authed)/profile/adresses" ? 'border-b-primary' : 'border-b-base-200'} rounded-b-none" href="/profile/addresses">
           <i class="fa-solid fa-user"></i>
           <p class="pb-1">آدرس ها</p>
         </a>
@@ -43,10 +45,10 @@
         </a>
       </li>
       <li>
-        <a class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent border-b-base-200 rounded-b-none" href="/">
+        <button class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent border-b-base-200 rounded-b-none" on:click={() => {logOut(); goto('/')}}>
           <i class="fa-solid fa-user"></i>
           <p class="pb-1">خروج</p>
-        </a>
+        </button>
       </li>
     </ul>
   </div>

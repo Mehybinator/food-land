@@ -25,7 +25,9 @@
     {/if}
     <a href="/checkout" class="btn btn-ghost btn-circle">
       <div class="indicator">
-        <span class="badge badge-sm indicator-item indicator-start">8</span>
+        {#if $auth}
+          <span class="badge badge-sm indicator-item indicator-start">{$auth.cart.cartCount}</span>
+        {/if}
         <i class="fa-solid fa-cart-shopping"></i>
       </div>
     </a>

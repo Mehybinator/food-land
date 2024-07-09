@@ -1,8 +1,7 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
   import { goto } from "$app/navigation";
-  import { login } from "$lib/auth";
-  import { register } from "$lib/auth";
+  import { login, register } from "$lib/auth";
 
   let modal: HTMLDialogElement;
   let signup: boolean = false;

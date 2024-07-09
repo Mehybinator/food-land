@@ -1,15 +1,40 @@
 <script lang="ts">
   import type { FoodItem } from "$lib/customInterfaces";
   import { auth } from "$lib/stores/auth";
+  import { addToCart, addToFavorites, removeFromCart, removeFromFavorites } from "$lib/apiCalls";
 
-  let count: number = 0;
-  let isFavorite: boolean = false;
+  let loadingFav: boolean = false;
+  let loadingCart: boolean = false;
 
   export let data: FoodItem;
 
-  if ($auth) {
-    const favItem = $auth.favorites.filter(value => value.id === data.id);
-    isFavorite = favItem.length > 0;
+  async function favoritesToggle(){
+    if($auth){
+      loadingFav = true;
+      if(!($auth.favorites.filter(favorite => favorite.id === data.id).length > 0)){
+        const res = await addToFavorites(data.id);
+        console.log(res)
+      }
+      else{
+        const res = await removeFromFavorites(data.id);
+        console.log(res)
+      }
+      loadingFav = false;
+    }
+  }
+
+  async function cartAdd(){
+    loadingCart = true;
+    const res = await addToCart(data.id);
+    console.log(res);
+    loadingCart = false;
+  }
+
+  async function cartRemove(){
+    loadingCart = true;
+    const res = await removeFromCart(data.id);
+    console.log(res);
+    loadingCart = false;
   }
 
 </script>
@@ -38,21 +63,38 @@
     </div>
     <div class="join h-12">
       <button
-        class="btn {isFavorite ? '' : 'btn-outline'} btn-error join-item basis-1/4">
-        <i class="{isFavorite ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+      on:click={favoritesToggle}
+        class="btn {loadingFav ? 'btn-disabled' : $auth ? $auth.favorites.filter(value => value.id === data.id).length > 0 ? '' : 'btn-outline' : 'btn-outline'} btn-error join-item basis-1/4">
+        {#if loadingFav}
+          <span class="loading loading-spinner loading-sm"></span>
+        {:else}
+          <i class="{$auth ? $auth.favorites.filter(value => value.id === data.id).length > 0 ? 'fa-solid' : 'fa-regular' : 'fa-regular'} fa-heart"></i>
+        {/if}
       </button>
-      {#if count > 0}
-        <button on:click={() => count++} class="btn btn-success join-item">
+      {#if $auth && $auth.cart.cartItems.find((cartItem) => cartItem.foodId === data.id) !== undefined}
+        <button on:click={cartAdd} class="btn btn-success join-item {loadingCart ? 'btn-disabled' : ''}">
           <i class="fa-solid fa-plus"></i>
         </button>
-        <span class="join-item grid place-items-center bg-base-200 w-full">{count}</span>
-        <button on:click={() => count--} class="btn btn-error join-item">
+        <span class="join-item grid place-items-center bg-base-200 w-full">
+          {#if loadingCart}
+            <span class="loading loading-spinner loading-sm"></span>
+          {:else}
+            {$auth.cart.cartItems.find((cartItem) => cartItem.foodId === data.id)?.quantity}
+          {/if}
+        </span>
+        <button on:click={cartRemove} class="btn btn-error join-item {loadingCart ? 'btn-disabled' : ''}">
           <i class="fa-solid fa-minus"></i>
         </button>
       {:else}
         <button
-          class="btn btn-primary join-item basis-3/4"
-          on:click={() => count++}>افزودن به سبد</button>
+          class="btn btn-primary join-item basis-3/4 {loadingCart ? 'btn-disabled' : ''}"
+          on:click={cartAdd}>
+          {#if loadingCart}
+            <span class="loading loading-spinner loading-sm"></span>
+          {:else}
+            <p>افزودن به سبد</p>
+          {/if}
+        </button>
       {/if}
     </div>
   </div>

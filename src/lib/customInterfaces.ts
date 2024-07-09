@@ -51,7 +51,6 @@ export interface User {
 }
 
 export interface Auth {
-    isAuthed: boolean,
     token: string,
     userName: string,
     name: string,
