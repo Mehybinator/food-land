@@ -1,0 +1,105 @@
+import { get } from 'svelte/store';
+import { auth } from '$lib/stores/auth';
+
+export async function addToCart(id: number): Promise<{ status: boolean; msg: string }> {
+	const $auth = get(auth);
+	if ($auth) {
+		try {
+			const response = await fetch('http://foodland.somee.com/api/Cart', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${$auth.token}`
+				},
+				body: JSON.stringify(id)
+			});
+
+			if (!response.ok) return { status: false, msg: 'Adding failed' };
+
+			const data = await response.json();
+
+			auth.update((auth) => {
+				if (auth) {
+					const existingItem = auth.cart.find((cartItem) => cartItem.id === data.foodId);
+					if (existingItem) {
+						return {
+							...auth,
+							cart: auth.cart.map((cartItem) =>
+								cartItem.id === data.foodId ? { ...cartItem, quantity: data.quantity } : cartItem
+							),
+							cartCount: auth.cartCount + 1
+						};
+					} else {
+						return {
+							...auth,
+							cart: [
+								...auth.cart,
+								{
+									id: data.foodId,
+									quantity: data.quantity
+								}
+							],
+							cartCount: auth.cartCount + 1
+						};
+					}
+				}
+				return auth;
+			});
+
+			return { status: true, msg: '' };
+		} catch (error) {
+			return { status: false, msg: 'err' };
+		}
+	}
+	return { status: false, msg: 'Not authorized' };
+}
+
+export async function removeFromCart(id: number): Promise<{ status: boolean; msg: string }> {
+	const $auth = get(auth);
+	if ($auth) {
+		try {
+			const response = await fetch('http://foodland.somee.com/api/Cart', {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${$auth.token}`
+				},
+				body: JSON.stringify(id)
+			});
+
+			if (!response.ok) return { status: false, msg: 'Removing failed' };
+
+			auth.update((auth) => {
+				if (auth) {
+					const existingItem = auth.cart.find((cartItem) => cartItem.id === id);
+					if (existingItem && existingItem.quantity > 1) {
+						return {
+							...auth,
+							cart: auth.cart.map((cartItem) =>
+								cartItem.id === id
+									? {
+											...cartItem,
+											quantity: cartItem.quantity - 1
+									  }
+									: cartItem
+							),
+							cartCount: auth.cartCount - 1
+						};
+					} else {
+						return {
+							...auth,
+							cart: auth.cart.filter((cartItem) => cartItem.id !== id),
+							cartCount: auth.cartCount - 1
+						};
+					}
+				}
+				return auth;
+			});
+
+			return { status: true, msg: '' };
+		} catch (error) {
+			return { status: false, msg: 'err' };
+		}
+	}
+	return { status: false, msg: 'Not authorized' };
+}
