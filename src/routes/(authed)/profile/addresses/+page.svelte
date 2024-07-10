@@ -30,7 +30,9 @@
 			>اضافه کردن</button
 		>
 	</div>
-	{#each data.addresses as address}
-		<AddressCard data={address} />
-	{/each}
+	{#if data.addresses}
+		{#each data.addresses as address}
+			<AddressCard data={address} />
+		{/each}
+	{/if}
 </div>
