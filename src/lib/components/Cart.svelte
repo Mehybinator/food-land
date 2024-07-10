@@ -1,5 +1,8 @@
 <script lang="ts">
   import Card from "./Card.svelte";
+  import { auth } from "$lib/stores/auth";
+  import type { CartResponse } from "$lib/customInterfaces";
+  export let data: CartResponse;
 </script>
 
 <div class="flex flex-col xl:flex-row gap-4">
@@ -11,9 +14,17 @@
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-y-4"
     >
-      <!-- {#each data as category}
-        <Card data={food} />
-      {/each} -->
+    {#if $auth}
+      {#if data.items.length > 0}
+        {#each data.items as cartItem}
+          {#if $auth.cart.find((value) => value.id == cartItem.id)}
+            <Card data={cartItem} />
+          {/if}
+        {/each}
+      {:else}
+        <h1>no items added</h1>
+      {/if}
+    {/if}
     </div>
   </div>
   <div
@@ -31,7 +42,7 @@
     <div class="divider m-0"></div>
     <div class="flex flex-row justify-between">
       <p>جمع خرید:</p>
-      <p>1,600,000</p>
+      <p>{data.totalPrice}</p>
     </div>
     <button class="btn btn-primary">تایید و پرداخت</button>
   </div>

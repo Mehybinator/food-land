@@ -6,7 +6,7 @@ export interface FoodItem {
     discountPercentage?: number | null;
     priceAfterDiscount?: number;
     description?: string;
-    categoryId: number;
+    categoryId?: number;
 }
 
 export interface Favorites extends FoodItem {
@@ -52,12 +52,34 @@ export interface User {
 
 export interface Auth {
     token: string,
+    userId: number,
     userName: string,
     name: string,
-    favorites: Favorites[],
-    cart: Cart,
+    favorites: number[],
+    cart: {id: number, quantity: number}[],
+    cartCount: number,
 }
 
 export interface Profile {
     name: string,
+}
+
+export interface CartResponse {
+    items: MappedCartResponsItem[],
+    totalPrice: number,
+}
+
+export interface CartResponsItem {
+    foodId: number,
+    quantity: number,
+    name: string,
+    imageUrl?: string,
+    decription: string,
+    discountPercentage?: number | null,
+    price: number,
+    priceAfterDiscount?: number
+}
+
+export interface MappedCartResponsItem extends Omit<CartResponsItem, 'foodId'> {
+    id: number;
 }

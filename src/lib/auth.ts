@@ -15,13 +15,14 @@ export async function login(username: string, password: string): Promise<{status
     
     auth.set({
       token: data.token,
+      userId: data.user.id,
       userName: data.user.userName,
       name: data.name,
-      favorites: data.favorites,
-      cart: {
-        cartItems: data.cartItems,
-        cartCount: data.cartCount
-      }
+      favorites: data.favorites.map((favorite) => favorite.id),
+      cart: data.cartItems.map((cartItem) => {
+        return {id: cartItem.foodId, quantity: cartItem.quantity}
+      }),
+      cartCount: data.cartCount
     });
 
     return ({status: true, msg:''});

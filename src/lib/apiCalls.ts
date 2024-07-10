@@ -22,7 +22,7 @@ export async function addToFavorites(id: number): Promise<{status: boolean, msg:
         if (value) {
           return {
             ...value,
-            favorites: [...value.favorites, data]
+            favorites: [...value.favorites, data.id]
           };
         }
         return value;
@@ -58,7 +58,7 @@ export async function removeFromFavorites(id: number): Promise<{status: boolean,
         if (value) {
           return {
             ...value,
-            favorites: value.favorites.filter((favorite) => favorite.id !== id)
+            favorites: value.favorites.filter((favorite) => favorite !== id)
           };
         }
         return value;
@@ -92,30 +92,30 @@ export async function addToCart(id: number): Promise<{status: boolean, msg: stri
 
       const data = await response.json();
 
-      auth.update((value) => {
-        if (value) {
-          const existingItem = value.cart.cartItems.find((cartItem) => cartItem.foodId === id);
+      auth.update((auth) => {
+        if (auth) {
+          const existingItem = auth.cart.find((cartItem) => cartItem.id === data.foodId);
           if (existingItem) {
             return {
-              ...value,
-              cart: {
-                cartItems: value.cart.cartItems.map((cartItem) =>
-                  cartItem.foodId === data.foodId ? data : cartItem
-                ),
-                cartCount: value.cart.cartCount + 1
-              }
+              ...auth,
+              cart: auth.cart.map((cartItem) => cartItem.id === data.foodId ? { ...cartItem, quantity: data.quantity } : cartItem),
+              cartCount: auth.cartCount + 1
             };
           } else {
             return {
-              ...value,
-              cart: {
-                cartItems: [...value.cart.cartItems, data],
-                cartCount: value.cart.cartCount + 1
-              }
+              ...auth,
+              cart: [
+                ...auth.cart,
+                {
+                  id: data.foodId,
+                  quantity: data.quantity
+                }
+              ],
+              cartCount: auth.cartCount + 1
             };
           }
         }
-        return value;
+        return auth;
       });
 
       return ({status: true, msg:''});
@@ -144,28 +144,24 @@ export async function removeFromCart(id: number): Promise<{status: boolean, msg:
 
       if (!response.ok) return({status: false, msg:'Removing failed'});
 
-      auth.update((value) => {
-        if (value) {
-          const existingItem = value.cart.cartItems.find((cartItem) => cartItem.foodId === id);
+      auth.update((auth) => {
+        if (auth) {
+          const existingItem = auth.cart.find((cartItem) => cartItem.id === id);
           if (existingItem && existingItem.quantity > 1) {
             return {
-              ...value,
-              cart: {
-                cartItems: value.cart.cartItems.map((cartItem) => cartItem.foodId === id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem),
-                cartCount: value.cart.cartCount - 1
-              }
+              ...auth,
+              cart: auth.cart.map((cartItem) => cartItem.id === id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem),
+              cartCount: auth.cartCount - 1
             };
           } else {
             return {
-              ...value,
-              cart: {
-                cartItems: value.cart.cartItems.filter((item) => item.foodId !== id),
-                cartCount: value.cart.cartCount - 1
-              }
+              ...auth,
+              cart: auth.cart.filter((cartItem) => cartItem.id !== id),
+              cartCount: auth.cartCount - 1
             };
           }
         }
-        return value;
+        return auth;
       });
 
       return ({status: true, msg:''});

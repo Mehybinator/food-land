@@ -11,7 +11,7 @@
   async function favoritesToggle(){
     if($auth){
       loadingFav = true;
-      if(!($auth.favorites.filter(favorite => favorite.id === data.id).length > 0)){
+      if(!($auth.favorites.filter(favorite => favorite === data.id).length > 0)){
         const res = await addToFavorites(data.id);
         console.log(res)
       }
@@ -37,6 +37,8 @@
     loadingCart = false;
   }
 
+
+  console.log(data)
 </script>
 
 <div class="card min-w-[17rem] max-w-[17rem] h-[28rem] bg-base-100 shadow-xl group">
@@ -64,14 +66,14 @@
     <div class="join h-12">
       <button
       on:click={favoritesToggle}
-        class="btn {loadingFav ? 'btn-disabled' : $auth ? $auth.favorites.filter(value => value.id === data.id).length > 0 ? '' : 'btn-outline' : 'btn-outline'} btn-error join-item basis-1/4">
+        class="btn {loadingFav ? 'btn-disabled' : $auth ? $auth.favorites.filter(favorite => favorite === data.id).length > 0 ? '' : 'btn-outline' : 'btn-outline'} btn-error join-item basis-1/4">
         {#if loadingFav}
           <span class="loading loading-spinner loading-sm"></span>
         {:else}
-          <i class="{$auth ? $auth.favorites.filter(value => value.id === data.id).length > 0 ? 'fa-solid' : 'fa-regular' : 'fa-regular'} fa-heart"></i>
+          <i class="{$auth ? $auth.favorites.filter(favorite => favorite === data.id).length > 0 ? 'fa-solid' : 'fa-regular' : 'fa-regular'} fa-heart"></i>
         {/if}
       </button>
-      {#if $auth && $auth.cart.cartItems.find((cartItem) => cartItem.foodId === data.id) !== undefined}
+      {#if $auth && $auth.cart.find((cartItem) => cartItem.id === data.id) !== undefined}
         <button on:click={cartAdd} class="btn btn-success join-item {loadingCart ? 'btn-disabled' : ''}">
           <i class="fa-solid fa-plus"></i>
         </button>
@@ -79,7 +81,7 @@
           {#if loadingCart}
             <span class="loading loading-spinner loading-sm"></span>
           {:else}
-            {$auth.cart.cartItems.find((cartItem) => cartItem.foodId === data.id)?.quantity}
+            {$auth.cart.find((cartItem) => cartItem.id === data.id)?.quantity}
           {/if}
         </span>
         <button on:click={cartRemove} class="btn btn-error join-item {loadingCart ? 'btn-disabled' : ''}">
