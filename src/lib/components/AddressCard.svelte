@@ -8,6 +8,7 @@
 	async function remove() {
 		removing = true;
 		const res = await removeAddress(data.id);
+		console.log(res);
 		removing = false;
 	}
 </script>
@@ -19,7 +20,7 @@
 	<span class="grid items-center pb-1 pr-2 bg-base-200 w-full border-r border-r-base-300"
 		>{data.streetAddress}
 	</span>
-	<button on:click={remove} class="btn join-item border-r-base-300"
-		><i class="fa-solid fa-user"></i></button
+	<button on:click={remove} class="btn join-item border-r-base-300 {removing ? 'btn-disabled' : ''}"
+		><i class="fa-solid fa-trash-can"></i></button
 	>
 </div>

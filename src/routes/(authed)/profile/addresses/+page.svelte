@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { addAddress } from '$lib/api/addressCalls';
 	import AddressCard from '$lib/components/AddressCard.svelte';
-	import type { PageData } from './$types';
-
-	export let data: PageData;
+	import addresses from '$lib/stores/addresses';
 
 	let adding: boolean = false;
 	let newAddress: string;
@@ -30,9 +28,7 @@
 			>اضافه کردن</button
 		>
 	</div>
-	{#if data.addresses}
-		{#each data.addresses as address}
-			<AddressCard data={address} />
-		{/each}
-	{/if}
+	{#each $addresses as address}
+		<AddressCard data={address} />
+	{/each}
 </div>
