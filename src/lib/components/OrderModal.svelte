@@ -16,9 +16,15 @@
 		<div class="flex flex-col justify-between items-center h-[32rem]">
 			<img src="/images/logo.png" alt="" class="w-24 pt-8" />
 			{#if data}
-				<p>
-					{data.streetAddress}
-				</p>
+				<div class="mt-10">
+					<button
+						class="btn btn-outline border-white border-b-black border-2 rounded-b-none text-lg"
+						>سفارش {data.id}</button
+					>
+					<p class="mt-6">
+						آدرس : {data.streetAddress}
+					</p>
+				</div>
 			{/if}
 		</div>
 	</div>

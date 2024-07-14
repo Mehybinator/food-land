@@ -12,7 +12,7 @@
 
 <h3 class="pt-8 pb-2 pr-6">سفارش های من</h3>
 <div class="divider px-6 m-0"></div>
-<div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 place-items-center py-4 gap-4">
+<div class="flex flex-col px-6 py-4 gap-4">
 	{#if data.orders}
 		{#each data.orders as order}
 			<OrderCard
