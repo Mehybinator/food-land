@@ -85,6 +85,7 @@
 						type="text"
 						class="grow"
 						disabled={loading}
+						required
 						placeholder="شماره همراه"
 					/>
 				</label>
@@ -92,9 +93,10 @@
 					<i class="fa-solid fa-key"></i>
 					<input
 						bind:value={password}
-						type="text"
+						type="password"
 						class="grow"
 						disabled={loading}
+						required
 						placeholder="رمز عبور"
 					/>
 				</label>
@@ -106,8 +108,10 @@
 						<i class="fa-solid fa-key"></i>
 						<input
 							bind:value={confirmPassword}
-							type="text"
+							type="password"
 							class="grow"
+							disabled={loading}
+							required
 							placeholder="تکرار رمز عبور"
 						/>
 					</label>

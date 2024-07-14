@@ -37,7 +37,7 @@
 		<label
 			class="lg:w-1/3 2xl:col-span-4 xl:col-span-3 md:col-span-2 input input-bordered flex items-center gap-2 shadow-xl border-none transition-all"
 		>
-			<input type="text" class="grow" placeholder="Search" bind:value={searchQuery} />
+			<input type="text" class="grow" placeholder="جستجو" bind:value={searchQuery} />
 			<i class="fa-solid fa-search"></i>
 		</label>
 		{#each data as category (category.id)}

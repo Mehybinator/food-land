@@ -48,6 +48,7 @@
 		<input
 			bind:value={userName}
 			type="text"
+			required
 			placeholder={$auth?.userName}
 			class="input input-bordered w-full"
 		/>

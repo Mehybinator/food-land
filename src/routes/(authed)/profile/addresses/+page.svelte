@@ -23,7 +23,12 @@
 			class="grid place-items-center w-auto whitespace-nowrap px-2 pb-1 border border-base-300 join-item"
 			>آدرس جدید:</span
 		>
-		<input bind:value={newAddress} class="input input-bordered join-item w-full" type="text" />
+		<input
+			bind:value={newAddress}
+			required
+			class="input input-bordered join-item w-full"
+			type="text"
+		/>
 		<button on:click={add} class="btn btn-primary join-item {adding ? 'btn-disabled' : ''}"
 			>اضافه کردن</button
 		>
