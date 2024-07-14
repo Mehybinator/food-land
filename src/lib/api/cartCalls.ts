@@ -5,7 +5,7 @@ export async function addToCart(id: number): Promise<{ status: boolean; msg: str
 	const $auth = get(auth);
 	if ($auth) {
 		try {
-			const response = await fetch('http://foodland.somee.com/api/Cart', {
+			const response = await fetch('/api/Cart', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export async function removeFromCart(id: number): Promise<{ status: boolean; msg
 	const $auth = get(auth);
 	if ($auth) {
 		try {
-			const response = await fetch('http://foodland.somee.com/api/Cart', {
+			const response = await fetch('/api/Cart', {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',

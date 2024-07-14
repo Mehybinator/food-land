@@ -6,7 +6,7 @@ export async function login(
 	password: string
 ): Promise<{ status: boolean; msg: string }> {
 	try {
-		const response = await fetch('http://foodland.somee.com/api/Auth/login', {
+		const response = await fetch('/api/Auth/login', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username, password })
@@ -41,7 +41,7 @@ export async function register(
 	confirmPassword: string
 ): Promise<{ status: boolean; msg: string }> {
 	try {
-		const response = await fetch('http://foodland.somee.com/api/Auth/register', {
+		const response = await fetch('/api/Auth/register', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username, password, confirmPassword })

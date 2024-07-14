@@ -6,7 +6,7 @@ import type { Address, CartResponse, CartResponsItem } from '$lib/customInterfac
 export const load: PageLoad = async ({ fetch }) => {
 	const $auth = get(auth);
 	if ($auth) {
-		const res1 = await fetch(`http://foodland.somee.com/api/Cart`, {
+		const res1 = await fetch(`/api/Cart`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const load: PageLoad = async ({ fetch }) => {
 			totalPrice: data1.totalPrice
 		};
 
-		const res2 = await fetch(`http://foodland.somee.com/api/Address`, {
+		const res2 = await fetch(`/api/Address`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',

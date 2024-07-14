@@ -5,7 +5,7 @@ export async function submitOrder(id: number): Promise<{ status: boolean; msg: s
 	const $auth = get(auth);
 	if ($auth) {
 		try {
-			const response = await fetch('http://foodland.somee.com/api/Orders', {
+			const response = await fetch('/api/Orders', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

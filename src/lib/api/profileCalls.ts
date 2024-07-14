@@ -17,7 +17,7 @@ export async function updateProfile(
 			if (password !== undefined) updateData.password = password;
 			if (confirmPassword !== undefined) updateData.confirmPassword = confirmPassword;
 
-			const response = await fetch('http://foodland.somee.com/api/Profile/update', {
+			const response = await fetch('/api/Profile/update', {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',

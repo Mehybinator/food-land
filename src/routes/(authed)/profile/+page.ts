@@ -6,7 +6,7 @@ import { get } from 'svelte/store';
 export const load: PageLoad = async ({ fetch }) => {
 	const $auth = get(auth);
 	if ($auth) {
-		const res = await fetch(`http://foodland.somee.com/api/Orders`, {
+		const res = await fetch(`/api/Orders`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',

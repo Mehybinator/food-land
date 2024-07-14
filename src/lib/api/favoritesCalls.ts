@@ -5,7 +5,7 @@ export async function addToFavorites(id: number): Promise<{ status: boolean; msg
 	const $auth = get(auth);
 	if ($auth) {
 		try {
-			const response = await fetch('http://foodland.somee.com/api/Favorites', {
+			const response = await fetch('/api/Favorites', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export async function removeFromFavorites(id: number): Promise<{ status: boolean
 	const $auth = get(auth);
 	if ($auth) {
 		try {
-			const response = await fetch('http://foodland.somee.com/api/Favorites', {
+			const response = await fetch('/api/Favorites', {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',

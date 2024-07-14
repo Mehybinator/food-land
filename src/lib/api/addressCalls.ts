@@ -7,7 +7,7 @@ export async function addAddress(address: string): Promise<{ status: boolean; ms
 	const $auth = get(auth);
 	if ($auth) {
 		try {
-			const response = await fetch('http://foodland.somee.com/api/Address', {
+			const response = await fetch('/api/Address', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export async function removeAddress(id: number): Promise<{ status: boolean; msg:
 	const $auth = get(auth);
 	if ($auth) {
 		try {
-			const response = await fetch('http://foodland.somee.com/api/Address', {
+			const response = await fetch('/api/Address', {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',
