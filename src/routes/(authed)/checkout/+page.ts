@@ -21,6 +21,15 @@ export const load: PageLoad = async ({ fetch }) => {
 			})),
 			totalPrice: data1.totalPrice
 		};
+		auth.update((value) => {
+			if (value) {
+				return {
+					...value,
+					cartTotalPrice: data1.totalPrice
+				};
+			}
+			return value;
+		});
 
 		const res2 = await fetch(`/api/Address`, {
 			method: 'GET',
