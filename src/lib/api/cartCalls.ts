@@ -20,14 +20,17 @@ export async function addToCart(id: number): Promise<{ status: boolean; msg: str
 
 			auth.update((auth) => {
 				if (auth) {
-					const existingItem = auth.cart.find((cartItem) => cartItem.id === data.foodId);
+					const existingItem = auth.cart.find((cartItem) => cartItem.id === data.cartItem.foodId);
 					if (existingItem) {
 						return {
 							...auth,
 							cart: auth.cart.map((cartItem) =>
-								cartItem.id === data.foodId ? { ...cartItem, quantity: data.quantity } : cartItem
+								cartItem.id === data.cartItem.foodId
+									? { ...cartItem, quantity: data.cartItem.quantity }
+									: cartItem
 							),
-							cartCount: auth.cartCount + 1
+							cartCount: auth.cartCount + 1,
+							cartTotalPrice: data.totalPrice
 						};
 					} else {
 						return {
@@ -35,11 +38,12 @@ export async function addToCart(id: number): Promise<{ status: boolean; msg: str
 							cart: [
 								...auth.cart,
 								{
-									id: data.foodId,
-									quantity: data.quantity
+									id: data.cartItem.foodId,
+									quantity: data.cartItem.quantity
 								}
 							],
-							cartCount: auth.cartCount + 1
+							cartCount: auth.cartCount + 1,
+							cartTotalPrice: data.totalPrice
 						};
 					}
 				}
@@ -69,6 +73,8 @@ export async function removeFromCart(id: number): Promise<{ status: boolean; msg
 
 			if (!response.ok) return { status: false, msg: 'Removing failed' };
 
+			const data = await response.json();
+
 			auth.update((auth) => {
 				if (auth) {
 					const existingItem = auth.cart.find((cartItem) => cartItem.id === id);
@@ -83,13 +89,15 @@ export async function removeFromCart(id: number): Promise<{ status: boolean; msg
 									  }
 									: cartItem
 							),
-							cartCount: auth.cartCount - 1
+							cartCount: auth.cartCount - 1,
+							cartTotalPrice: data.totalPrice
 						};
 					} else {
 						return {
 							...auth,
 							cart: auth.cart.filter((cartItem) => cartItem.id !== id),
-							cartCount: auth.cartCount - 1
+							cartCount: auth.cartCount - 1,
+							cartTotalPrice: data.totalPrice
 						};
 					}
 				}

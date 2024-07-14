@@ -51,7 +51,7 @@
 			<li>
 				<a
 					class="!text-base-content hover:!text-primary-content flex justify-start btn btn-outline btn-primary border-2 border-transparent {$page
-						.route.id === '/(authed)/profile/adresses'
+						.route.id === '/(authed)/profile/addresses'
 						? 'border-b-primary'
 						: 'border-b-base-200'} rounded-b-none"
 					href="/profile/addresses"

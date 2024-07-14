@@ -57,6 +57,7 @@ export interface Auth {
 	name: string;
 	favorites: number[];
 	cart: { id: number; quantity: number }[];
+	cartTotalPrice: number;
 	cartCount: number;
 }
 
@@ -89,4 +90,22 @@ export interface Address {
 	streetAddress: string;
 	userId: string;
 	user: null;
+}
+
+export interface Order {
+	id: number;
+	userId: string;
+	orderDate: string;
+	streetAddress: string;
+	totalPrice: number;
+	orderItems: OrderItem[];
+}
+
+export interface OrderItem {
+	id: number;
+	foodId: number;
+	foodName: string;
+	price: number;
+	quantity: number;
+	orderId: number;
 }
