@@ -30,7 +30,7 @@
 		{#if $auth}
 			<a href="/profile" class="btn">
 				<i class="fa-solid fa-right-to-bracket"></i>
-				<p class="hidden sm:block">{$auth.userName}</p>
+				<p class="hidden sm:block">{$auth.name ? $auth.name : $auth.userName}</p>
 			</a>
 		{:else}
 			<LoginSignup />

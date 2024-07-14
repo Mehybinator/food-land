@@ -29,16 +29,20 @@ export async function updateProfile(
 			if (!response.ok) return { status: false, msg: 'Update failed' };
 
 			// Update the store with the new values
-			auth.update((auth) => {
-				if (auth) {
-					return {
-						...auth,
-						name: name !== undefined ? name : auth.name,
-						userName: username !== undefined ? username : auth.userName
-					};
-				}
-				return auth;
-			});
+			if (password && confirmPassword) {
+				auth.set(null);
+			} else {
+				auth.update((auth) => {
+					if (auth) {
+						return {
+							...auth,
+							name: name !== undefined ? name : auth.name,
+							userName: username !== undefined ? username : auth.userName
+						};
+					}
+					return auth;
+				});
+			}
 
 			return { status: true, msg: 'Profile updated successfully' };
 		} catch (error) {

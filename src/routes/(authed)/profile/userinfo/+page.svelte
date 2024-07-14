@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { updateProfile } from '$lib/api/profileCalls';
 	import { auth } from '$lib/stores/auth';
 
@@ -17,18 +18,16 @@
 			password || undefined,
 			confirmPassword || undefined
 		);
-		loading = false;
 
 		// Optionally, you can add some user feedback here based on the response
 		if (res.status) {
-			// Show success message
+			if (password != '' && confirmPassword != '') {
+				goto('/');
+			}
 		} else {
 			// Show error message
 		}
-
-		// Clear password fields after update attempt
-		password = '';
-		confirmPassword = '';
+		loading = false;
 	}
 </script>
 
