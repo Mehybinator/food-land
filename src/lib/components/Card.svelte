@@ -15,10 +15,8 @@
 			loadingFav = true;
 			if (!($auth.favorites.filter((favorite) => favorite === data.id).length > 0)) {
 				const res = await addToFavorites(data.id);
-				console.log(res);
 			} else {
 				const res = await removeFromFavorites(data.id);
-				console.log(res);
 			}
 			loadingFav = false;
 		}
@@ -27,18 +25,14 @@
 	async function cartAdd() {
 		loadingCart = true;
 		const res = await addToCart(data.id);
-		console.log(res);
 		loadingCart = false;
 	}
 
 	async function cartRemove() {
 		loadingCart = true;
 		const res = await removeFromCart(data.id);
-		console.log(res);
 		loadingCart = false;
 	}
-
-	console.log(data);
 </script>
 
 <div class="card min-w-[17rem] max-w-[17rem] h-[28rem] bg-base-100 shadow-xl group">

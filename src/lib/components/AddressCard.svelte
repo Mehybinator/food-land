@@ -8,7 +8,6 @@
 	async function remove() {
 		removing = true;
 		const res = await removeAddress(data.id);
-		console.log(res);
 		removing = false;
 	}
 </script>

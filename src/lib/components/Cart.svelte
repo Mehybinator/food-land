@@ -15,7 +15,6 @@
 		if (selectValue != -1) {
 			loading = true;
 			const res = await submitOrder(selectValue);
-			console.log(res);
 			loading = false;
 		}
 	}

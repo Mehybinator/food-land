@@ -17,7 +17,6 @@
 			password || undefined,
 			confirmPassword || undefined
 		);
-		console.log(res);
 		loading = false;
 
 		// Optionally, you can add some user feedback here based on the response
