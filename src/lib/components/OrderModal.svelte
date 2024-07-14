@@ -13,8 +13,8 @@
 		<form method="dialog">
 			<button class="btn btn-sm btn-circle btn-ghost absolute left-2 top-2">✕</button>
 		</form>
-		<div class="flex flex-col justify-between items-center h-[32rem]">
-			<img src="/images/logo.png" alt="" class="w-24 pt-8" />
+		<div class="flex flex-col h-[32rem]">
+			<img src="/images/logo.png" alt="" class="w-24 pt-8 place-self-center" />
 			{#if data}
 				<div class="mt-10">
 					<button
